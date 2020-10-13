@@ -1,10 +1,13 @@
 import Router from 'express';
-import OrphanageController from './controllers/orphanages';
+import uploadConfig from './config/upload';
+import OrphanagesController from './controllers/orphanages-controller';
+import multer from 'multer';
 
 const routes = Router();
+const upload = multer(uploadConfig);
 
-routes.get('/orphanages', OrphanageController.index);
-routes.get('/orphanage/:id', OrphanageController.show);
-routes.post('/orphanages', OrphanageController.create);
+routes.get('/orphanages', OrphanagesController.index);
+routes.get('/orphanage/:id', OrphanagesController.show);
+routes.post('/orphanages', upload.array('images'), OrphanagesController.create);
 
 export default routes

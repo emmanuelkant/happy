@@ -2,20 +2,11 @@ import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiClock, FiInfo } from "react-icons/fi";
 import { Map, Marker, TileLayer } from "react-leaflet";
-import L from 'leaflet';
 
-import mapMarkerImg from '../images/map-marker.svg';
 import Sidebar from "../components/Sidebar";
+import mapIcon from '../utils/mapIcon';
 
 import '../styles/pages/orphanage.css';
-
-const happyMapIcon = L.icon({
-  iconUrl: mapMarkerImg,
-
-  iconSize: [58, 68],
-  iconAnchor: [29, 68],
-  popupAnchor: [0, -60]
-})
 
 export default function Orphanage() {
 
@@ -66,7 +57,7 @@ export default function Orphanage() {
                 <TileLayer 
                   url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker interactive={false} icon={happyMapIcon} position={[-22.9092141,-43.1991939]} />
+                <Marker interactive={false} icon={mapIcon} position={[-22.9092141,-43.1991939]} />
               </Map>
 
               <footer>

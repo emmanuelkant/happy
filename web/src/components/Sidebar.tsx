@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiArrowLeft, FiSidebar } from 'react-icons/fi';
+import { FiArrowLeft } from 'react-icons/fi';
 import mapMarkerImg from '../images/map-marker.svg';
 import { useHistory } from 'react-router-dom';
 

@@ -37,7 +37,7 @@ export default {
     });
 
     const orphanagesRepository = getRepository(Orphanage);
-
+    console.log(open_on_weekends)
     const data = {
       name,
       latitude,

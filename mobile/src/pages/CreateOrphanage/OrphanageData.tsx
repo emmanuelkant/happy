@@ -3,7 +3,8 @@ import { ScrollView, View, StyleSheet, Switch, Text, TextInput, TouchableOpacity
 import { Feather } from '@expo/vector-icons';
 import { RectButton } from 'react-native-gesture-handler';
 import * as ImagePicker from 'expo-image-picker';
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import api from '../../services/api';
 
 interface OrphanageDataParams {
   latitude: number;
@@ -12,26 +13,39 @@ interface OrphanageDataParams {
 
 export default function OrphanageData() {
   const route = useRoute();
+  const navigation =  useNavigation();
   const position = route.params as OrphanageDataParams; 
   const [name, setName] = useState('');
   const [instructions, setInstructions] = useState('');
   const [about, setAbout] = useState('');
   const [opening_hours, setOpeningHours] = useState('');
-  const [open_on_weekend, setOpenOnWeekend] = useState(true);
+  const [open_on_weekends, setOpenOnWeekends] = useState(true);
   const [images, setImages] = useState<string[]>([]);
   
 
-  function handleCreateOrphanage() {
+  async function handleCreateOrphanage() {
     const { latitude, longitude } = position;
-    console.log({
-      name,
-      about,
-      instructions,
-      open_on_weekend,
-      opening_hours,
-      latitude,
-      longitude,
-    })
+
+    const data = new FormData();
+
+    data.append('name', name);
+    data.append('instructions', instructions);
+    data.append('about', about);
+    data.append('opening_hours', opening_hours);
+    data.append('open_on_weekends', String(open_on_weekends));
+    data.append('latitude', String(latitude));
+    data.append('longitude', String(longitude));
+    images.forEach((image, index) => {
+      data.append('images', {
+        name: `image_${index}.jpg`,
+        type: 'image/jpg',
+        uri: image,
+      } as any);
+    });
+
+    await api.post('orphanages', data);
+
+    navigation.navigate('OrphanagesMap');
   }
 
   async function handleSelectImages() {
@@ -115,8 +129,8 @@ export default function OrphanageData() {
         <Switch 
           thumbColor="#fff" 
           trackColor={{ false: '#ccc', true: '#39CC83' }}
-          value={open_on_weekend}
-          onValueChange={setOpenOnWeekend}
+          value={open_on_weekends}
+          onValueChange={setOpenOnWeekends}
         />
       </View>
 

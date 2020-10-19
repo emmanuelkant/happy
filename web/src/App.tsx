@@ -1,13 +1,14 @@
 import React from 'react';
-
-import './styles/global.css';
-import 'leaflet/dist/leaflet.css';
+import GlobalStyles from './styles/global';
 
 import Routes from './routes';
 
 function App() {
   return (
-    <Routes />
+    <React.Fragment>
+      <GlobalStyles />
+      <Routes />
+    </React.Fragment>
   );
 }
 

@@ -1,15 +1,15 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
+import * as S from './styles';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet'
 import { useHistory } from 'react-router-dom';
-
 import { FiPlus } from 'react-icons/fi';
-import mapIcon from '../utils/mapIcon';
 
-import Sidebar from '../components/Sidebar';
-import api from '../services/api';
 
-import '../styles/pages/create-orphanage.css';
+import mapIcon from '../../utils/mapIcon';
+import Sidebar from '../../components/Sidebar/';
+import api from '../../services/api';
+
 
 export default function CreateOrphanage() {
   const history = useHistory();
@@ -65,13 +65,13 @@ export default function CreateOrphanage() {
   }
 
   return (
-    <div id="page-create-orphanage">
+    <S.CreateOrphanagePage id="page-create-orphanage">
       <Sidebar />
 
-      <main>
-        <form className="create-orphanage-form" onSubmit={handleSubmit}>
-          <fieldset>
-            <legend>Dados</legend>
+      <S.Main>
+        <S.Form className="create-orphanage-form" onSubmit={handleSubmit}>
+          <S.DataSection>
+            <S.TitleSection>Dados</S.TitleSection>
 
             <Map 
               center={[-22.9092141,-43.1991939]} 
@@ -91,95 +91,93 @@ export default function CreateOrphanage() {
               )}
             </Map>
 
-            <div className="input-block">
-              <label htmlFor="name">Nome</label>
-              <input
+            <S.InputField className="input-block">
+              <S.InputLabel htmlFor="name">Nome</S.InputLabel>
+              <S.Input
                 id="name"
                 value={name}
                 onChange={event => setName(event.target.value)}
               />
-            </div>
+            </S.InputField>
 
-            <div className="input-block">
-              <label htmlFor="about">Sobre <span>Máximo de 300 caracteres</span></label>
-              <textarea
+            <S.InputField className="input-block">
+              <S.InputLabel htmlFor="about">Sobre <span>Máximo de 300 caracteres</span></S.InputLabel>
+              <S.TextArea
                 id="about"
                 value={about}
                 maxLength={300}
                 onChange={event => setAbout(event.target.value)}
               />
-            </div>
+            </S.InputField>
 
-            <div className="input-block">
-              <label htmlFor="images">Fotos</label>
+            <S.InputField className="input-block">
+              <S.InputLabel htmlFor="images">Fotos</S.InputLabel>
 
-              <div className="images-container">
+              <S.ImageContainer className="images-container">
                 {previewImages.map(image => {
                   return (
-                    <img key={image} src={image} alt={name} />
+                    <S.Image key={image} src={image} alt={name} />
                   )
                 })}
-                <label htmlFor="image[]" className="new-image">
+                <S.NewImage htmlFor="image[]" className="new-image">
                   <FiPlus size={24} color="#15b6d6" />
-                </label>
-              </div>
-              <input multiple onChange={handleSelectImages} type="file" id="image[]" />
+                </S.NewImage>
+              </S.ImageContainer>
+              <S.ImageInput multiple onChange={handleSelectImages} type="file" id="image[]" />
 
-            </div>
-          </fieldset>
+            </S.InputField>
+          </S.DataSection>
 
-          <fieldset>
-            <legend>Visitação</legend>
+          <S.VisitSection>
+            <S.TitleSection>Visitação</S.TitleSection>
 
-            <div className="input-block">
-              <label htmlFor="instructions">Instruções</label>
-              <textarea 
+            <S.InputField className="input-block">
+              <S.InputLabel htmlFor="instructions">Instruções</S.InputLabel>
+              <S.TextArea 
                 id="instructions"
                 value={instructions}
                 maxLength={300}
                 onChange={event => setInstructions(event.target.value)}
               />
-            </div>
+            </S.InputField>
 
-            <div className="input-block">
-              <label htmlFor="opening_hours">Horário de Funcionamento</label>
-              <input 
+            <S.InputField className="input-block">
+              <S.InputLabel htmlFor="opening_hours">Horário de Funcionamento</S.InputLabel>
+              <S.Input 
                 id="opening_hours"
                 value={opening_hours}
                 maxLength={300}
                 onChange={event => setOpeningHours(event.target.value)}
               />
-            </div>
+            </S.InputField>
 
-            <div className="input-block">
-              <label htmlFor="open_on_weekends">Atende fim de semana</label>
+            <S.InputField className="input-block">
+              <S.InputLabel htmlFor="open_on_weekends">Atende fim de semana</S.InputLabel>
 
-              <div className="button-select">
-                <button
+              <S.Select className="button-select">
+                <S.SelectButton
                   type="button"
                   onClick={() => setOpenOnWeekends(true)}
-                  className={open_on_weekends ? 'active' : ''}
+                  isActive={open_on_weekends}
                 >
                   Sim
-                </button>
-                <button 
+                </S.SelectButton>
+                <S.SelectButton 
                   type="button"
                   onClick={() => setOpenOnWeekends(false)}
-                  className={!open_on_weekends ? 'active' : ''}
+                  isActive={!open_on_weekends}
                 >
                   Não
-                </button>
-              </div>
-            </div>
-          </fieldset>
+                </S.SelectButton>
+              </S.Select>
+            </S.InputField>
+          </S.VisitSection>
 
-          <button className="confirm-button" type="submit">
+          <S.ConfirmButton className="confirm-button" type="submit">
             Confirmar
-          </button>
-        </form>
-      </main>
-    </div>
+          </S.ConfirmButton>
+        </S.Form>
+      </S.Main>
+    </S.CreateOrphanagePage>
   );
 }
-
-// return `https://a.tile.openstreetmap.org/${z}/${x}/${y}.png`;

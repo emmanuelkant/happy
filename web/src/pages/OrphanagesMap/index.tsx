@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import * as S from './styles';
 import { Link } from 'react-router-dom';
 import { FiPlus, FiArrowRight } from 'react-icons/fi';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
-import mapMarkerImg from '../images/map-marker.svg';
-import mapIcon from '../utils/mapIcon';
-import api from '../services/api';
+import mapMarkerImg from '../../images/map-marker.svg';
+import mapIcon from '../../utils/mapIcon';
+import api from '../../services/api';
 
-import '../styles/pages/orphanages-map.css';
+import './leaflet-styles.css';
 
 interface Orphanage {
   id: number;
@@ -26,18 +27,18 @@ function OrphanagesMaps() {
   }, []);
 
   return (
-    <div id="page-map">
-      <aside>
+    <S.MapPage id="page-map">
+      <S.Aside>
         <header>
           <img src={mapMarkerImg} alt="Uma carinha feliz pintada de amarelo"/>
-          <h2>Escolha um orfanato no mapa</h2>
-          <p>Muitas crianças estão esperando a sua visita :)</p>
+          <S.Title>Escolha um orfanato no mapa</S.Title>
+          <S.Text>Muitas crianças estão esperando a sua visita :)</S.Text>
         </header>
-        <footer>
-          <strong>Rio de Janeiro</strong>
+        <S.Footer>
+          <S.Strong>Rio de Janeiro</S.Strong>
           <span>Rio de Janeiro</span>
-        </footer>
-      </aside>
+        </S.Footer>
+      </S.Aside>
       <Map
         center={[-22.9092141,-43.1991939]}
         zoom={15}
@@ -55,10 +56,10 @@ function OrphanagesMaps() {
           </Marker>
         ))}
       </Map>
-      <Link to="/orphanages/create" className="create-orphanage">
+      <S.CreateOrphanage to="/orphanages/create">
         <FiPlus size="32" color="#fff" />
-      </Link>
-    </div>
+      </S.CreateOrphanage >
+    </S.MapPage>
   );
 }
 

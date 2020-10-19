@@ -1,4 +1,6 @@
-aside.app-sidebar {
+import styled from 'styled-components';
+
+export const Aside = styled.aside`
   position: fixed;
   height: 100%;
   padding: 32px 24px;
@@ -8,14 +10,13 @@ aside.app-sidebar {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-}
+`;
 
-aside.app-sidebar img {
+export const Image = styled.img`
   width: 48px;
-}
+`;
 
-aside.app-sidebar footer a,
-aside.app-sidebar footer button {
+export const BackButton = styled.button`
   width: 48px;
   height: 48px;
 
@@ -31,9 +32,8 @@ aside.app-sidebar footer button {
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-aside.app-sidebar footer a:hover,
-aside.app-sidebar footer button:hover {
-  background: #17D6EB;
-}
+  &:hover {
+    background: #17D6EB;
+  }
+`;

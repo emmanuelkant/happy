@@ -57,13 +57,13 @@ export const InputLabel = styled.label`
   color: #8FA7B3;
   margin-bottom: 8px;
   line-height: 24px;
-`;
 
-export const Span = styled.span`
-  font-size: 14px;
-  color: #8FA7B3;
-  margin-left: 24px;
-  line-height: 24px;
+  span {
+    font-size: 14px;
+    color: #8FA7B3;
+    margin-left: 24px;
+    line-height: 24px;
+  }
 `;
 
 const DefaultInput = styled.input`
@@ -92,6 +92,28 @@ export const ImageContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 16px;
+`;
+
+export const ImageUI = styled.div`
+  position: relative;
+`;
+
+export const RemoveImage = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #fff;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+
+  border: 1px solid #D3E2E5;
+  border-radius: 0px 19px;
 `;
 
 export const Image = styled.img`

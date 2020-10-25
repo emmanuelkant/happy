@@ -3,7 +3,7 @@ import * as S from './styles';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet'
 import { useHistory } from 'react-router-dom';
-import { FiPlus } from 'react-icons/fi';
+import { FiPlus, FiX } from 'react-icons/fi';
 
 
 import mapIcon from '../../utils/mapIcon';
@@ -49,19 +49,29 @@ export default function CreateOrphanage() {
   }
 
   function handleSelectImages(event: ChangeEvent<HTMLInputElement>) {
+    debugger;
     if(!event.target.files) {
       return null;
     }
-
     const selectedImages = Array.from(event.target.files);
 
-    setImages(selectedImages);
+    setImages([ ...images, ...selectedImages ]);
 
     const selectedImagesPreview = selectedImages.map(image => {
       return URL.createObjectURL(image);
     });
 
-    setPreviewImages(selectedImagesPreview);
+    setPreviewImages([ ...previewImages, ...selectedImagesPreview ]);
+  }
+
+  function handleRemoveImage(targetIndex: number) {
+    const newImages = [ ...images ];
+    newImages.splice(targetIndex, 1);
+    setImages(newImages);
+
+    const newPreviewImages = [ ...previewImages ];
+    newPreviewImages.splice(targetIndex, 1);
+    setPreviewImages(newPreviewImages);
   }
 
   return (
@@ -114,9 +124,14 @@ export default function CreateOrphanage() {
               <S.InputLabel htmlFor="images">Fotos</S.InputLabel>
 
               <S.ImageContainer className="images-container">
-                {previewImages.map(image => {
+                {previewImages.map((image, key) => {
                   return (
-                    <S.Image key={image} src={image} alt={name} />
+                    <S.ImageUI key={image}>
+                      <S.RemoveImage type="button" onClick={() => handleRemoveImage(key)} >
+                        <FiX size={24} color="#ff669d" />
+                      </S.RemoveImage>
+                      <S.Image src={image} alt={name} />
+                    </S.ImageUI>
                   )
                 })}
                 <S.NewImage htmlFor="image[]" className="new-image">

@@ -20,6 +20,10 @@ function Landing() {
           <span>Rio de Janeiro</span>
         </S.Location>
 
+        <S.LoginButton to="/app">
+          <S.Strong>Acesso Restrito</S.Strong>
+        </S.LoginButton>
+
         <S.EnterAppButton to="/app">
           <FiArrowRight size={26} color="rgba(0, 0, 0, 0.6)" />
         </S.EnterAppButton>

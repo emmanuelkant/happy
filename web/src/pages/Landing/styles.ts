@@ -49,7 +49,7 @@ export const Text = styled.p`
 export const Location = styled.div`
   position: absolute;
   top: 0;
-  right: 0;
+  left: 300px;
 
   font-size: 24px;
   line-height: 34px;
@@ -62,6 +62,31 @@ export const Location = styled.div`
 
 export const Strong = styled.strong`
   font-weight: 800;
+`;
+
+export const LoginButton = styled(Link)`
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 222px;
+  height: 56px;
+  background: #12D4E0;
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+  color: #fff;
+
+  transition: all 0.2s;
+
+  &:hover {
+    background: #96FEFF;
+    color: #15C3D6;
+  }
 `;
 
 export const EnterAppButton = styled(Link)`

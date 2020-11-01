@@ -49,7 +49,6 @@ export default function CreateOrphanage() {
   }
 
   function handleSelectImages(event: ChangeEvent<HTMLInputElement>) {
-    debugger;
     if(!event.target.files) {
       return null;
     }
@@ -62,6 +61,8 @@ export default function CreateOrphanage() {
     });
 
     setPreviewImages([ ...previewImages, ...selectedImagesPreview ]);
+
+    event.target.value = '';
   }
 
   function handleRemoveImage(targetIndex: number) {

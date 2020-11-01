@@ -5,11 +5,9 @@ import { LeafletMouseEvent } from 'leaflet'
 import { useHistory } from 'react-router-dom';
 import { FiPlus, FiX } from 'react-icons/fi';
 
-
 import mapIcon from '../../utils/mapIcon';
 import Sidebar from '../../components/Sidebar/';
 import api from '../../services/api';
-
 
 export default function CreateOrphanage() {
   const history = useHistory();
@@ -45,7 +43,7 @@ export default function CreateOrphanage() {
     });
 
     await api.post('orphanages', data);
-    history.push('/app');
+    history.push('/orphanage/create/success');
   }
 
   function handleSelectImages(event: ChangeEvent<HTMLInputElement>) {

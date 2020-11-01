@@ -43,7 +43,7 @@ export default function CreateOrphanage() {
     });
 
     await api.post('orphanages', data);
-    history.push('/orphanage/create/success');
+    history.push('/orphanages/create/success');
   }
 
   function handleSelectImages(event: ChangeEvent<HTMLInputElement>) {

@@ -42,7 +42,13 @@ export default function CreateOrphanage() {
       data.append('images', image);
     });
 
-    await api.post('orphanages', data);
+    const response = await api.post('orphanages', data);
+
+    if (response.status !== 201) {
+      history.push('/orphanages/create/fail');
+      return;
+    }
+
     history.push('/orphanages/create/success');
   }
 

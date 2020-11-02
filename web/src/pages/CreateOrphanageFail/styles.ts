@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import successImg from '../../images/success.svg';
+import failImg from '../../images/fail.svg';
 
-export const CreateOrphanageSuccessPage = styled.div`
+export const CreateOrphanageFailPage = styled.div`
   width: 100vw;
   height: 100vh;
 
@@ -11,7 +11,7 @@ export const CreateOrphanageSuccessPage = styled.div`
   justify-content: center;
   align-items: center;
 
-  background: #37C77F;
+  background: #FF669D;
 `;
 
 export const ContentWrapper = styled.div`
@@ -28,7 +28,7 @@ export const ContentWrapper = styled.div`
   align-items: flex-start;
   justify-content: center;
 
-  background: url(${successImg}) no-repeat 80% center;
+  background: url(${failImg}) no-repeat 80% center;
 `;
 
 export const Content = styled.div`
@@ -57,7 +57,7 @@ export const Text = styled.p`
 export const BackButton = styled(Link)`
   width: 222px;
   height: 56px;
-  background: #31B272;
+  background: #D6487B;
   border-radius: 20px;
 
   display: flex;
@@ -70,7 +70,7 @@ export const BackButton = styled(Link)`
   transition: all 0.2s;
 
   &:hover {
-    background: #3BD689;
+    background: #FF6EA2;
   }
 `;
 

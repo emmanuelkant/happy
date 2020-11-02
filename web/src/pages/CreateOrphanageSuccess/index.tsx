@@ -11,7 +11,7 @@ export default function CreateOrphanageSuccess() {
             O cadastro deu certo e foi enviado ao administrador para ser aprovado. Agora é só esperar :)
           </S.Text>
           <S.LoginButton to="/app">
-            <S.Strong>Acesso Restrito</S.Strong>
+            <S.Strong>Voltar para o mapa</S.Strong>
           </S.LoginButton>
         </S.Content>
       </S.ContentWrapper>

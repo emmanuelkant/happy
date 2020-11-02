@@ -1,8 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 type LoginButtonProps = {
   disable: boolean;
+}
+
+type RememberMeInputProps = {
+  checked: boolean;
 }
 
 const FlexDiv = styled.div`
@@ -135,19 +139,37 @@ export const Checkbox = styled.span`
   width: 24px;
   height: 24px;
 
-  background: #F5F8FA;
+  background: ${({ checked }: RememberMeInputProps) => checked ? '#37C77F' : '#F5F8FA' };
 
   border: 1px solid #D3E2E5;
   box-sizing: border-box;
   border-radius: 8px;
+
+  ${({ checked }: RememberMeInputProps) => checked && css`
+    &:after {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 3px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  ` }
+
 `;
 
 export const RememberMeText = styled.span`
   margin-left: 35px;
 `;
 
-export const ForgotPasswordText = styled.span`
-  cursor: pointer;
+export const ForgotPassword = styled(Link)`
+  text-decoration: none;
+  color: #8FA7B3;
 `;
 
 export const LoginButton = styled.button`

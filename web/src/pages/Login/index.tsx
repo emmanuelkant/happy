@@ -1,10 +1,12 @@
-import React from 'react';
-import * as S from './styles';
+import React, { useState } from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
+import * as S from './styles';
 
 import logoImg from '../../images/logo-login.svg';
 
 function Login() {
+  const [rememberMe, setRememberMe] = useState(false);
+
   return (
     <S.LoginPage>
       <S.LeftWrapper>
@@ -22,22 +24,23 @@ function Login() {
               <S.InputLabel htmlFor="email">E-mail</S.InputLabel>
               <S.Input
                 id="email"
+                type="email"
               />
             </S.InputField>
             <S.InputField className="input-block">
               <S.InputLabel htmlFor="password">Senha</S.InputLabel>
               <S.Input
                 id="password"
+                type="password"
               />
             </S.InputField>
           </S.Form>
           <S.UtilityWrapper>
-            <S.RememberMe>
-              <input type="checkbox" />
-              <S.Checkbox />
+            <S.RememberMe onClick={() => setRememberMe(!rememberMe)}>
+              <S.Checkbox checked={rememberMe}/>
               <S.RememberMeText>Lembrar-me</S.RememberMeText>
             </S.RememberMe>
-            <S.ForgotPasswordText>Esqueci minha senha</S.ForgotPasswordText>
+            <S.ForgotPassword to="/app">Esqueci minha senha</S.ForgotPassword>
           </S.UtilityWrapper>
           <S.LoginButton disable={true}>Entrar</S.LoginButton>
         </S.ContentWrapper>

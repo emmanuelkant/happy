@@ -20,7 +20,7 @@ function Landing() {
           <span>Rio de Janeiro</span>
         </S.Location>
 
-        <S.LoginButton to="/app">
+        <S.LoginButton to="/login">
           <S.Strong>Acesso Restrito</S.Strong>
         </S.LoginButton>
 

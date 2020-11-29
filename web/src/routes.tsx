@@ -10,6 +10,7 @@ import CreateOrphanageFail from './pages/CreateOrphanageFail';
 import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
 import RedefinePassword from './pages/RedefinePassword';
+import Registered from './pages/Dashboard/Registered';
 
 function Routes() {
   return (
@@ -24,6 +25,7 @@ function Routes() {
         <Route path="/orphanages/create/fail" component={CreateOrphanageFail} />
         <Route path="/orphanages/create" component={CreateOrphanage} />
         <Route path="/orphanages/:id" component={Orphanage} />
+        <Route path="/dashboard/registered" component={Registered} />
       </Switch>
     </BrowserRouter>
   );

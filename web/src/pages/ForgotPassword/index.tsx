@@ -4,24 +4,25 @@ import * as S from './styles';
 
 import logoImg from '../../images/logo-login.svg';
 
-function Login() {
-  const [rememberMe, setRememberMe] = useState(false);
+function ForgotPassword() {
   const [isDisable, setIsDisable] = useState(true);
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  
+
   useEffect(() => {
-    if (email && password) {
+    if (email) {
       setIsDisable(false);
     } else {
       setIsDisable(true);
     }
-  }, [email, password]); 
+  }, [email]); 
 
   return (
-    <S.LoginPage>
+    <S.ForgotPasswordPage>
       <S.LeftWrapper>
-        <img src={logoImg} alt="Uma carinha amarela feliz e um texto dizendo happy"/>
+        <img
+          src={logoImg}
+          alt="Uma carinha amarela feliz e um texto dizendo happy"
+        />
         <S.Location>
           <S.Strong>Rio de Janeiro</S.Strong>
           <span>Rio de Janeiro</span>
@@ -29,7 +30,10 @@ function Login() {
       </S.LeftWrapper>
       <S.RightWrapper>
         <S.ContentWrapper>
-          <S.Title>Fazer login</S.Title>
+          <S.Title>Esqueci a senha</S.Title>
+          <S.Text>
+            Sua redefinição de senha será enviada para o e-mail cadastrado.
+          </S.Text>
           <S.Form className="create-orphanage-form">
             <S.InputField className="input-block">
               <S.InputLabel htmlFor="email">E-mail</S.InputLabel>
@@ -40,32 +44,16 @@ function Login() {
                 onChange={e => setEmail(e.target.value)}
               />
             </S.InputField>
-            <S.InputField className="input-block">
-              <S.InputLabel htmlFor="password">Senha</S.InputLabel>
-              <S.Input
-                id="password"
-                type="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-              />
-            </S.InputField>
           </S.Form>
-          <S.UtilityWrapper>
-            <S.RememberMe onClick={() => setRememberMe(!rememberMe)}>
-              <S.Checkbox checked={rememberMe}/>
-              <S.RememberMeText>Lembrar-me</S.RememberMeText>
-            </S.RememberMe>
-            <S.ForgotPassword to="/forgotPassword">Esqueci minha senha</S.ForgotPassword>
-          </S.UtilityWrapper>
-          <S.LoginButton disable={isDisable}>Entrar</S.LoginButton>
+          <S.EnterButton disable={isDisable}>Entrar</S.EnterButton>
         </S.ContentWrapper>
         <S.BackButton to="/app">
           <FiArrowLeft size={26} color="15C3D6" strokeWidth={3} />
         </S.BackButton>
       </S.RightWrapper>
-    </S.LoginPage>
+    </S.ForgotPasswordPage>
   );
 }
 
-export default Login;
+export default ForgotPassword;
 

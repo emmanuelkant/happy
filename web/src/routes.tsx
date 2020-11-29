@@ -8,6 +8,7 @@ import CreateOrphanage from './pages/CreateOrphanage/';
 import CreateOrphanageSuccess from './pages/CreateOrphanageSuccess';
 import CreateOrphanageFail from './pages/CreateOrphanageFail';
 import Login from './pages/Login';
+import ForgotPassword from './pages/ForgotPassword';
 
 function Routes() {
   return (
@@ -16,6 +17,7 @@ function Routes() {
         <Route path="/" exact component={Landing} />
         <Route path="/login" component={Login} />
         <Route path="/app" component={OrphanagesMap} />
+        <Route path="/forgotPassword" component={ForgotPassword} />
         <Route path="/orphanages/create/success" component={CreateOrphanageSuccess} />
         <Route path="/orphanages/create/fail" component={CreateOrphanageFail} />
         <Route path="/orphanages/create" component={CreateOrphanage} />

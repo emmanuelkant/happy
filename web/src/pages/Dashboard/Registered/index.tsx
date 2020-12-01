@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { FiPlus, FiX } from 'react-icons/fi';
 
 import mapIcon from '../../../utils/mapIcon';
-import Sidebar from '../../../components/Sidebar/';
+import Sidebar from '../../../components/SidebarDashboard/';
 import api from '../../../services/api';
 
 export default function Registered() {

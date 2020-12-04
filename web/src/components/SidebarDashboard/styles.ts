@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface ButtonProps {
-  space?: string; 
+  space?: string;
+  isActive?: boolean;
 };
 
 export const Aside = styled.aside`
@@ -26,10 +27,8 @@ export const Button = styled.button`
 
   border: 0;
 
-  background: #12AFCB;
+  background: ${({ isActive }: ButtonProps) => (isActive ? '#FFD666' : '#12AFCB')};
   border-radius: 16px;
-
-  cursor: pointer;
 
   transition: background-color 0.2s;
 
@@ -38,8 +37,12 @@ export const Button = styled.button`
   align-items: center;
 
   margin: ${({ space }: ButtonProps) => (space ? space : '0')};
+  
+  ${({ isActive }: ButtonProps) => (!isActive && css`
+    cursor: pointer;
+    &:hover {
+      background: #17D6EB;
+    }
+  `)}
 
-  &:hover {
-    background: #17D6EB;
-  }
 `;
